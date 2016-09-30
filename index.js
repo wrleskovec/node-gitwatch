@@ -14,14 +14,14 @@ program
     var dirName = path.normalize(dir);
     console.log(dir);
     fs.readFile(path.join(dirName, '.gitignore'), 'utf-8', function(err, data) {
-      var ignoreRE = '//';
+      var ignoreRE = new RegExp('.git/' + '|' + 'node_modules/');
       if (err) {
         console.log('.gitignore not found');
       } else {
         var ignoreList = data.trim().split('\n').map(function(s) {
           return globToRE(s).source;
         });
-        ignoreRE = new RegExp('.git/' + '|' + 'node_modules/' + '|' + ignoreList.join('|'));
+        ignoreRE = new RegExp( ignoreRE.source + '|' + ignoreList.join('|'));
       }
 
       console.log(ignoreRE);
@@ -30,13 +30,13 @@ program
         console.log(event, fPath);
         if(event === 'change') {
           clearTimeout(timeoutID);
-          timeoutID = setTimeOut(function() {
+          timeoutID = setTimeout(function() {
             exec('git -C ' + dirName + ' add .', function(e, std, stde) {
               exec('git -C ' + dirName + ' commit -am "changes"', function(e, std, stde) {
                 exec('git -C ' + dirName + ' push origin master');
               })
             });
-          }, timeOutPref);
+          }, timeoutPref);
         }
       })
     });
