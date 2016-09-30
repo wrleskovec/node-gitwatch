@@ -1,0 +1,25 @@
+{
+  "name": "node-gitwatch",
+  "version": "1.0.0",
+  "description": "watches git project directory for changes, automatically commits and pushes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrleskovec/node-gitwatch.git"
+  },
+  "keywords": [],
+  "author": "William Leskovec <russell.leskovec@gmail.com> (https://wrleskovec.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wrleskovec/node-gitwatch/issues"
+  },
+  "homepage": "https://github.com/wrleskovec/node-gitwatch#readme",
+  "dependencies": {
+    "chokidar": "^1.6.0",
+    "commander": "^2.9.0",
+    "glob-to-regexp": "^0.3.0"
+  }
+}
