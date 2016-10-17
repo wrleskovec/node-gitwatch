@@ -17,7 +17,7 @@
     "url": "https://github.com/wrleskovec/node-gitwatch/issues"
   },
   "bin": {
-    "node-gitwatch": "index.js"
+    "node-gitwatch": "./index.js"
   },
   "homepage": "https://github.com/wrleskovec/node-gitwatch#readme",
   "dependencies": {
